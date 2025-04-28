@@ -1,0 +1,84 @@
+
+<?php
+
+    include("database.php")
+
+<?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="second.css">
+    <link rel="icon" href="1abaf0599ef158dbe7110f259b631f71.jpg" >
+</head>
+<body>
+    <div id="mheader" class="header">
+        <img style="height:100px;width:200px;" src="images.png" alt="Logo">
+        <h1>Welcome to SCOB000 database!! Please sign in below:</h1>
+        <hr>
+    </div>
+
+    <div class="fWrapper">
+        <p class="title">Register</p>
+
+        <div id="firstWrapper">
+            <form action="register.php" method="post">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input class="input_field" type="text" minlength="3" id="name" placeholder="Enter Name" required>
+                    <label>Name</label>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input class="input_field" type="text" minlength="3" id="Surname" placeholder="Enter Surname" required>
+                    <label>Surname</label>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-id-card"></i>
+                    <input class="input_field" type="number" minlength="3" id="Student_number" placeholder="Enter Student Number" required>
+                    <label>Student Number</label>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-book"></i>
+                    <input class="input_field" type="text" minlength="3" name="module_code" placeholder="Module Code" required>
+                    <label>Module Code</label>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-phone"></i>
+                    <input class="input_field" type="number" id="contact" placeholder="Enter Contact" required>
+                    <label>Contact Number</label>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input class="input_field" type="email" id="Email" placeholder="eg. 123@gmail.com" required>
+                    <label>Email</label>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input class="input_field" type="password" id="password" placeholder="Enter Password" required>
+                    <label>Password</label>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input class="input_field" type="password" id="confirm_password" placeholder="Re-enter Password" required>
+                    <label>Re-Enter Password</label>
+                </div>
+
+                <input class="button" type="submit" value="Sign Up"><br>
+            </form>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
