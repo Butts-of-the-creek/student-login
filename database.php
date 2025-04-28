@@ -8,7 +8,7 @@
 
 	$conn = mysqli_connect($database_server,
 			$database_user,
-			$database_pasword,
+			$database_password,
 			$database_name);
 
         
