@@ -153,10 +153,11 @@ include("database.php");
 <?php
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $action = filter_input(INPUT_POST, "action", FILTER_SANITIZE_SPECIAL_CHARS);
+    $action = filter_input(INPUT_POST, "action", FILTER_SANITIZE_SPECIAL_CHARS);// filter any malicious INPUT 
 
-    if ($action === "signup") {
-        // Registration logic
+    if ($action === "signup") // Registration logic 
+    {
+        //Filter, yet again, any malicious input
         $Name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS);
         $surname = filter_input(INPUT_POST, "surname", FILTER_SANITIZE_SPECIAL_CHARS);
         $contact = filter_input(INPUT_POST, "contact", FILTER_SANITIZE_SPECIAL_CHARS);
@@ -166,13 +167,16 @@ include("database.php");
         $student_number = filter_input(INPUT_POST, "student_number", FILTER_SANITIZE_SPECIAL_CHARS);
         $module_code = filter_input(INPUT_POST, "module_code", FILTER_SANITIZE_SPECIAL_CHARS);
 
-        if ($password === $confirm_password) {
-            $hash = password_hash($password, PASSWORD_DEFAULT);
-            $stmt = $conn->prepare("INSERT INTO users 
+        if ($password === $confirm_password) //validating password
+        {
+            $hash = password_hash($password, PASSWORD_DEFAULT);//hash password if == confirm_password
+            $stmt = $conn->prepare // preparing to insert sql into db
+            ("INSERT INTO users 
             (student_num, name, surname, contact_num, module_code, email, password) VALUES (?, ?, ?, ?, ?, ?, ?)");
             $stmt->bind_param("issssss", $student_number, $Name, $surname, $contact, $module_code, $email, $hash);
 
-            if ($stmt->execute()) {
+            if ($stmt->execute())
+             {
                 echo "You are now registered!";
             } else {
                 echo "Error: " . $stmt->error;
@@ -184,7 +188,7 @@ include("database.php");
         }
     } elseif ($action === "signin") {
         // Sign-in logic
-        $signin_email = filter_input(INPUT_POST, "signin_email", FILTER_SANITIZE_SPECIAL_CHARS);
+        $signin_email = filter_input(INPUT_POST, "signin_email", FILTER_SANITIZE_SPECIAL_CHARS);//security measure agaist XSS attacks
         $signin_password = filter_input(INPUT_POST, "signin_password", FILTER_SANITIZE_SPECIAL_CHARS);
 
         $stmt = $conn->prepare("SELECT password FROM users WHERE email = ?");
